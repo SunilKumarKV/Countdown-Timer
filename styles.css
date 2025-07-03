@@ -1,88 +1,127 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap");
 
+:root {
+  --bg: #f5f5f5;
+  --text: #111;
+  --accent: #2d00f7;
+  --card-bg: rgba(255, 255, 255, 0.8);
+  --glass: rgba(0, 0, 0, 0.05);
+}
+
+body.dark {
+  --bg: #111;
+  --text: #f5f5f5;
+  --accent: #00ffe5;
+  --card-bg: rgba(255, 255, 255, 0.1);
+  --glass: rgba(255, 255, 255, 0.05);
+}
+
 * {
   box-sizing: border-box;
 }
 
 body {
-  /* background-image: url(./images/img2.jpg); */
-  background-image: url(./images/snow.jpg);
-  /* background-color: rgb(253, 191, 217); */
-  background-size: cover;
-  background-position: center center;
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.5s ease, color 0.5s ease;
+  font-family: "Poppins", sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
-  font-family: "Poppins", sans-serif;
   margin: 0;
+  padding: 0 20px;
 }
 
-.des {
-  background: rgb(25, 22, 73);
-  background: linear-gradient(
-    90deg,
-    rgba(25, 22, 73, 0.548) 0%,
-    rgba(18, 190, 187, 0.486) 22%,
-    rgba(23, 211, 249, 0.438) 78%
-  );
+.top-bar {
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 3rem 0 1rem 0;
 }
 
-.des {
-  background-color: rgba(255, 255, 255, 0.418);
-  width: auto;
-  padding: 20px 20px;
-}
-
-p,
-li {
-  font-weight: bold;
-  font-size: medium;
-}
-
-h1 {
-  background: -webkit-linear-gradient(#9f004a, #e100ff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: bold;
-  font-size: 72px;
-  font-size: 4rem;
-  margin-top: 5rem;
-  padding: 0px;
-  margin: 0px;
+#toggle-theme {
+  background: none;
+  color: var(--text);
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
 }
 
 .countdown-container {
-  /* background-color: rgb(39, 46, 49); */
-  background: rgb(238, 174, 202);
-  background: radial-gradient(
-    circle,
-    rgba(238, 174, 202, 1) 0%,
-    rgba(148, 187, 233, 0.742734593837535) 100%
-  );
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 20px 30px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding: 0px;
+  max-width: 900px;
   margin-bottom: 25px;
-}
-
-span {
-  color: rgb(6, 109, 102);
-}
-
-.big-text {
-  color: rgb(0, 255, 234);
-  font-weight: bold;
-  font-size: 6rem;
-  line-height: 1;
-  margin: 1rem 2rem;
+  transition: background 0.5s ease;
+  gap: 25px;
 }
 
 .countdown-el {
   text-align: center;
+  flex: 1 1 100px;
+  min-width: 90px;
 }
 
 .countdown-el span {
   font-size: 1.3rem;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.big-text {
+  font-weight: bold;
+  font-size: 6rem;
+  line-height: 1;
+  margin: 0.5rem 0;
+  color: var(--accent);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.des {
+  max-width: 900px;
+  background-color: rgba(255, 255, 255, 0.418);
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 4rem;
+  font-weight: bold;
+  font-size: medium;
+  line-height: 1.4;
+  color: var(--text);
+}
+
+/* Tick animation */
+.tick {
+  animation: pulse 0.3s ease-in-out;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .big-text {
+    font-size: 4rem;
+  }
+  .countdown-el {
+    flex: 1 1 80px;
+  }
 }
